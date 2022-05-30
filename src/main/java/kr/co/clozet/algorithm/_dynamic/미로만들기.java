@@ -11,5 +11,5 @@ package kr.co.clozet.algorithm._dynamic;
  * =============================================
  * 2022-05-25           sungsuhan      최초 생성
  **/
-public class 일로말들기 {
+public class 미로만들기 {
 }
