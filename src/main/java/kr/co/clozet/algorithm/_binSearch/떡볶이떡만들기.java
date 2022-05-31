@@ -12,4 +12,5 @@ package kr.co.clozet.algorithm._binSearch;
  * 2022-05-25           sungsuhan      최초 생성
  **/
 public class 떡볶이떡만들기 {
+
 }
