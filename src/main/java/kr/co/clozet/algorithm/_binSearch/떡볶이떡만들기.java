@@ -1,14 +1,11 @@
 package kr.co.clozet.algorithm._binSearch;
 
-import lombok.*;
-import org.junit.jupiter.api.Test;
+
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
-import static java.util.Collections.binarySearch;
 
 /**
  * 오늘은 떡볶이 떡을 만드는 날이다. 떡볶이 떡은 재밌게도 떡볶이 떡의 길이가 일정하지 않다. 대신에 한 봉지 안에 들어가는
@@ -33,7 +30,7 @@ import static java.util.Collections.binarySearch;
  * fileName        :떡볶이떡만들기.java
  * author          : sungsuhan
  * date            :2022-05-25
- * desc            :
+ * desc            : https://velog.io/@ikkoun/%EB%96%A1%EB%B3%B6%EC%9D%B4-%EB%96%A1-%EB%A7%8C%EB%93%A4%EA%B8%B0-%EB%AC%B8%EC%A0%9C
  * =============================================
  * DATE              AUTHOR        NOTE
  * =============================================
@@ -41,15 +38,13 @@ import static java.util.Collections.binarySearch;
  **/
 
 public class 떡볶이떡만들기 {
-    public static int binarySearch(int[] arr, int target, int start, int end)
-    {
+
+    public static int binarySearch(int[] arr, int target, int start, int end) {
         int result = 0;
-        while(start <= end)
-        {
+        while(start <= end) {
             long total = 0;
             int mid = (start + end) / 2;
-            for(int i = 0; i < arr.length; i++)
-            {
+            for(int i = 0; i < arr.length; i++) {
                 if (arr[i] > mid)
                     total += arr[i] - mid;
             }
@@ -65,11 +60,14 @@ public class 떡볶이떡만들기 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        System.out.println("떡의 갯수");
         int n = sc.nextInt();
+        System.out.println("원하는 떡의 길이");
         int m = sc.nextInt();
         sc.nextLine(); // 버퍼 제거
 
         ArrayList<Integer> arrayList = new ArrayList<>();
+        System.out.println(n+"개의 개별 떡 높이");
         for(int i = 0; i < n; i++)
         {
             int temp = sc.nextInt();
