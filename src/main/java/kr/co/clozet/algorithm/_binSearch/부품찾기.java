@@ -63,36 +63,36 @@ public class 부품찾기 {
         String[] result;
         @Override
         public String toString(){
-            return String.format("%s", result);
+            return String.format(Arrays.toString(result));
         }
     }
 
     @FunctionalInterface
-    public interface  SolutionService{
+    public interface SolutionService{
         Solution solution(Solution s);
     }
 
-    static class Service {
+    class Service {
         Solution test(Solution s) {
             SolutionService f = e -> {
-                int[] components = new int[e.getN()];
-                int[] askedComp = new int[e.getM()];
                 String[] result = new String[e.getM()];
                 Arrays.sort(e.getComponents());
                 for (int i=0; i<e.getM(); i++) {
-                    if (binarySearch(components, askedComp[i], 0, e.getN() - 1) >= 0) {
+                    if (binarySearch(e.getComponents(), e.getAskedComp()[i], 0, e.getN() - 1) >= 0) {
                         result[i] = "YES";
                     } else result[i] = "NO";
                 }
                 return Solution.builder()
                         .components(e.getComponents())
                         .askedComp(e.getAskedComp())
-                        .result(e.getResult())
+                        .result(result)
                         .build();
             };
             return f.solution(s);
         }
     }
+
+
     @Test
     public void testSolution(){
         int[] components = {8, 3, 7, 9, 2};
@@ -108,40 +108,5 @@ public class 부품찾기 {
         Service s2 = new Service();
         System.out.println(s2.test(s));
     }
-//    public static void main(String[] args) {
-//        Scanner sc = new Scanner(System.in);
-//        System.out.println("가게의 부품 총 개수");
-//        int n = sc.nextInt();
-//        int[] components = new int[n];
-//        sc.nextLine();
-//        System.out.println(n+"개의 부품번호");
-//        for (int i = 0; i < n; i++) {
-//            components[i] = sc.nextInt();
-//        }
-//        sc.nextLine();
-//        System.out.println("손님이 문의한 부품 총 개수");
-//        int m = sc.nextInt();
-//        int[] askedComp = new int[m];
-//        sc.nextLine();
-//        System.out.println(m+"개의 부품번호");
-//        for (int i = 0; i < m; i++) {
-//            askedComp[i] = sc.nextInt();
-//        }
-//
-//        String[] results = new String[m];
-//
-//        // 정렬
-//        Arrays.sort(components);
-//
-//        // 이진탐색
-//        for (int i = 0; i < m; i++) {
-//            if (binarySearch(components, askedComp[i], 0, n - 1) >= 0) {
-//                results[i] = "YES";
-//            } else results[i] = "NO";
-//        }
-//
-//        for (String result : results) {
-//            System.out.print(result + " ");
-//        }
-//    }
+
 }
