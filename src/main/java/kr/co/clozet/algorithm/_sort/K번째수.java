@@ -1,9 +1,5 @@
 package kr.co.clozet.algorithm._sort;
 
-<<<<<<< HEAD
-=======
-import kr.co.clozet.algorithm._greedy.최대최소값;
->>>>>>> 029fc03af7f5fdeb4a1573cb623bfc7febbdff2f
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -46,15 +42,8 @@ import java.util.Arrays;
  * 2022-05-25           sungsuhan      최초 생성
  **/
 public class K번째수 {
-<<<<<<< HEAD
-    @Builder
-    @Getter
-    @AllArgsConstructor
-    @NoArgsConstructor
-=======
 
     @Builder @Getter @AllArgsConstructor @NoArgsConstructor
->>>>>>> 029fc03af7f5fdeb4a1573cb623bfc7febbdff2f
     public static class Solution{
         private int[] array;
         int[][] commands;
@@ -110,10 +99,4 @@ public class K번째수 {
 
     }
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 029fc03af7f5fdeb4a1573cb623bfc7febbdff2f
 }

@@ -61,6 +61,7 @@ public class 부품찾기 {
         int n;
         int m;
         String[] result;
+
         @Override
         public String toString(){
             return String.format(Arrays.toString(result));
@@ -92,7 +93,6 @@ public class 부품찾기 {
         }
     }
 
-
     @Test
     public void testSolution(){
         int[] components = {8, 3, 7, 9, 2};
@@ -108,5 +108,6 @@ public class 부품찾기 {
         Service s2 = new Service();
         System.out.println(s2.test(s));
     }
+
 
 }

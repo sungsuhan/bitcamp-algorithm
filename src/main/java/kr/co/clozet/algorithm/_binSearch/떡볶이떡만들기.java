@@ -1,11 +1,10 @@
 package kr.co.clozet.algorithm._binSearch;
 
-
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
-
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.junit.Test;
 
 /**
  * 오늘은 떡볶이 떡을 만드는 날이다. 떡볶이 떡은 재밌게도 떡볶이 떡의 길이가 일정하지 않다. 대신에 한 봉지 안에 들어가는
@@ -38,46 +37,106 @@ import java.util.Scanner;
  **/
 
 public class 떡볶이떡만들기 {
+    @Builder @Getter @AllArgsConstructor @NoArgsConstructor
+    public static class Solution{
+        int n;
+        int m;
+        int[] arr;
+        int result;
 
-    public static int binarySearch(int[] arr, int target, int start, int end) {
-        int result = 0;
-        while(start <= end) {
-            long total = 0;
-            int mid = (start + end) / 2;
-            for(int i = 0; i < arr.length; i++) {
-                if (arr[i] > mid)
-                    total += arr[i] - mid;
-            }
-            if(total < target)
-                end = mid - 1;
-            else {
-                result = mid;
-                start = mid + 1;
-            }
+        @Override
+        public String toString(){
+            return String.format("%d", result);
         }
-        return result;
     }
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("떡의 갯수");
-        int n = sc.nextInt();
-        System.out.println("원하는 떡의 길이");
-        int m = sc.nextInt();
-        sc.nextLine(); // 버퍼 제거
-
-        ArrayList<Integer> arrayList = new ArrayList<>();
-        System.out.println(n+"개의 개별 떡 높이");
-        for(int i = 0; i < n; i++)
-        {
-            int temp = sc.nextInt();
-            arrayList.add(temp);
-        }
-
-        Collections.sort(arrayList);
-        int pr = binarySearch(arrayList.stream().mapToInt(i -> i).toArray(), m, 0, arrayList.get(n-1));
-        System.out.println(pr);
+    @FunctionalInterface
+    public interface SolutionService{
+        Solution solution(Solution s);
     }
+
+    class Service{
+        Solution test(Solution s){
+            SolutionService f = e ->{
+                int start = 0;
+                int end = (int) 1e9;
+                e.result = 0;
+                while (start <= end) {
+                    long total = 0;
+                    int mid = (start+end)/2;
+
+                    for (int i=0; i<e.getN(); i++){  //잘랐을때의 떡의 양 계산
+                        if (e.getArr()[i] > mid) {
+                            total += e.getArr()[i] - mid;
+                        }
+                    }
+                    if (total < e.getM()){ // 떡의 양이 부족한 경우 더 많이 자르기(왼쪽 부분 탐색)
+                        end = mid-1;
+                    }
+                    else { // 떡의 양이 충분한 경우 덜 자르기(오른쪽 부분 탐색)
+                        e.result = mid;
+                        start = mid + 1;
+                    }
+                }
+
+                return Solution.builder()
+                        .result(e.getResult())
+                        .build();
+            };
+            return f.solution(s);
+        }
+    }
+
+    @Test
+    public void testSolution(){
+        int n = 4;
+        int m = 6;
+        int[] arr = {19, 15, 10, 17};
+        Solution s = Solution.builder()
+                .n(n)
+                .m(m)
+                .arr(arr)
+                .build();
+        Service s2 = new Service();
+        System.out.println(s2.test(s));
+    }
+
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//
+//        // 떡의 개수(N)와 요청한 떡의 길이(M)
+//        int n = sc.nextInt();
+//        int m = sc.nextInt();
+//
+//        // 각 떡의 개별 높이 정보
+//        int[] arr = new int[n];
+//        for(int i=0; i<n; i++){
+//            arr[i] = sc.nextInt();
+//        }
+//
+//        // 이진 탐색을 위한 시작점과 끝점 설정 (1e9 = 1*10^9)
+//        int start = 0;
+//        int end = (int) 1e9;
+//
+//        //이진 탐색 수행 (반복적)
+//        int result = 0;
+//        while (start <= end) {
+//            long total = 0;
+//            int mid = (start+end)/2;
+//            for (int i=0; i<n; i++){
+//                //잘랐을때의 떡의 양 계산
+//                if (arr[i]>mid) total += arr[i] - mid;
+//            }
+//            if (total<m) { // 떡의 양이 부족한 경우 더 많이 자르기(왼쪽 부분 탐색)
+//                end = mid-1;
+//            }
+//            else { // 떡의 양이 충반한 경우 덜 자르기(오른쪽 부분 탐색)
+//                result = mid; // 최대한 덜 잘랐을 때가 정답이므로 여기에서 result에 기록
+//                start = mid + 1;
+//            }
+//        }
+//        System.out.println(result);
+//    }
 
 
 }
