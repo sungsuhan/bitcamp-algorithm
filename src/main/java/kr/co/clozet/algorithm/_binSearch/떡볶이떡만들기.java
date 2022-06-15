@@ -80,7 +80,7 @@ public class 떡볶이떡만들기 {
                 }
 
                 return Solution.builder()
-                        .result(e.getResult())
+                        .result(e.result)
                         .build();
             };
             return f.solution(s);

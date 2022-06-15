@@ -83,7 +83,7 @@ public class 징검다리 {
                         right = mid - 1;
                 }
                 return Solution.builder()
-                        .answer(e.getAnswer())
+                        .answer(e.answer)
                         .build();
             };
             return f.solution(s);

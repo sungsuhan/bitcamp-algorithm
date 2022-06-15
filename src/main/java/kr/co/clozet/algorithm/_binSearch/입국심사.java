@@ -74,7 +74,7 @@ public class 입국심사 {
                 }
 
                 return Solution.builder()
-                        .answer(e.getAnswer())
+                        .answer(e.answer)
                         .build();
             };
             return f.solution(s);

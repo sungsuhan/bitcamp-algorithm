@@ -84,8 +84,8 @@ public class 부품찾기 {
                     } else result[i] = "NO";
                 }
                 return Solution.builder()
-                        .components(e.getComponents())
-                        .askedComp(e.getAskedComp())
+                        .components(e.components)
+                        .askedComp(e.askedComp)
                         .result(result)
                         .build();
             };

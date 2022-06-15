@@ -40,7 +40,9 @@ public class 최대최소값 {
                 for(int i : e.getArr()){
                     if(i < min) min = i;
                 }
-                return Solution.builder().min(min).build();
+                return Solution.builder()
+                        .min(min)
+                        .build();
             };
             return f.solution(s);
         }
