@@ -80,9 +80,9 @@ public class 체육복 {
                     }
                 }
                 return Solution.builder()
-                        .lost(e.getLost())
-                        .reserve(e.getReserve())
-                        .answer(e.getAnswer())
+                        .lost(e.lost)
+                        .reserve(e.reserve)
+                        .answer(e.answer)
                         .build();
             };
             return f.solution(s);
