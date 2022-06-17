@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.junit.Test;
 
+import javax.persistence.criteria.CriteriaBuilder;
+
 /**
  * 두 개의 단어 begin, target 과 단어의 집합 words 가 있습니다. 아래와 같은 규칙을 이용하여 begin 에서 target 으로
  * 변환하는 가장 짧은 변환 과정을 찾으려고 합니다.
@@ -27,52 +29,67 @@ import org.junit.Test;
  * fileName        :단어변환.java
  * author          : sungsuhan
  * date            :2022-05-25
- * desc            :
+ * desc            : https://technote-mezza.tistory.com/25
  * =============================================
  * DATE              AUTHOR        NOTE
  * =============================================
  * 2022-05-25           sungsuhan      최초 생성
  **/
 public class 단어변환 {
-//
-//    public void dfs(String begin, String target, int count, String[] words)
-//
-//
-//    @Builder @Getter @NoArgsConstructor @AllArgsConstructor
-//    public static class Solution{
-//
-//
-//        @Override
-//        public String toString(){
-//            return String.format("");
-//        }
-//    }
-//
-//    @FunctionalInterface
-//    public interface SolutionService{
-//        Solution solution(Solution s);
-//    }
-//
-//    class Service{
-//        Solution test(Solution s) {
-//            SolutionService f = e -> {
-//
-//                return Solution.builder().build();
-//            };
-//            return f.solution(s);
-//        }
-//    }
-//
-//    @Test
-//    public void testSolution(){
-//        String begin = "hit";
-//        String target = "cog";
-//        Solution s = Solution.builder().build();
-//        Service s2 = new Service();
-//        System.out.println(s2.test(s));
-//
-//
-//    }
+
+
+
+    @Builder @Getter @NoArgsConstructor @AllArgsConstructor
+    public static class Solution{
+        String begin;
+        String target;
+        String[] words;
+        String now;
+        int cnt;
+        boolean[] visit;
+        int answer;
+
+        @Override
+        public String toString(){
+            return String.format("%d", answer);
+        }
+    }
+
+
+    @FunctionalInterface
+    public interface SolutionService{
+        Solution solution(Solution s);
+    }
+
+    class Service{
+        Solution test(Solution s) {
+            SolutionService f = e -> {
+
+
+
+                return Solution.builder()
+
+                        .build();
+            };
+            return f.solution(s);
+        }
+    }
+
+    @Test
+    public void testSolution(){
+        String begin = "hit";
+        String target = "cog";
+        String[] words ={"hot", "dot", "dog", "lot", "log"};
+        Solution s = Solution.builder()
+                .begin(begin)
+                .target(target)
+                .words(words)
+                .build();
+        Service s2 = new Service();
+        System.out.println(s2.test(s));
+
+
+    }
 
 
 
