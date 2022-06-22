@@ -59,7 +59,7 @@ public class 네트워크 {
 
     @FunctionalInterface
     public interface SolutionService{
-        Solution solution(Solution S);
+        Solution solution(Solution s);
     }
 
     class Service{

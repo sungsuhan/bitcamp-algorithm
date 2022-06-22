@@ -32,7 +32,7 @@ import org.junit.Test;
  * fileName        :미로탈출.java
  * author          : sungsuhan
  * date            :2022-05-25
- * desc            :백준 17090
+ * desc            :백준 17090, https://moons-memo.tistory.com/239
  * =============================================
  * DATE              AUTHOR        NOTE
  * =============================================
@@ -41,7 +41,11 @@ import org.junit.Test;
 public class 미로탈출 {
 //    @Builder @Getter @AllArgsConstructor @NoArgsConstructor
 //    public static class Solution{
-//
+//        int[] map;
+//        int[] visited;
+//        boolean[] successCheck;
+//        int n;
+//        int m;
 //
 //        @Override
 //        public String toString(){
